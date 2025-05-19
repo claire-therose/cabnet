@@ -18,7 +18,7 @@ export default function Home() {
       </div>
 
       <div className="h-dvh font-[family-name:var(--font-noto-sans)] font-medium text-stone-200 p-2.5 bg-stone-800">
-        so there i was, barbeque sauce on my titties
+        so there i was, barbeque sauce on my titties.
       </div>
 
 
