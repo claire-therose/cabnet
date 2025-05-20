@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font_outfit.variable} ${font_noto_sans.variable} antialiased overscroll-none`}
+        className={`${font_outfit.variable} ${font_noto_sans.variable} antialiased overscroll-none overflow-hidden`}
       >
         {children}
       </body>
