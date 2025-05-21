@@ -8,7 +8,7 @@ import MenuPanel from "./ui_elements/menu_panel";
 export default function Home() {
   return (
     <div className="">
-      <div className="absolute bg-linear-to-r/oklch from-cpink-400/70 md:via-pink-500/1 to-fuchsia-400/70 h-11 w-full topology_background mask-size-[20rem]" />
+      <div className="absolute bg-linear-to-r/oklch from-cpink-400/70 md:via-pink-500/1 to-fuchsia-400/70 h-11 w-full mask-position-[left_top_426.5px] topology_background mask-size-[20rem]" />
       <MenuPanel />
       <div className="inline-flex flex-row h-11 w-full content-center brightness-100">
         <div className="grow justify-self-start flex p-2.5">

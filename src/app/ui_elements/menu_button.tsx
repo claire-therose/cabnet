@@ -7,19 +7,7 @@
 import { motion, useCycle } from "motion/react"
 import MenuItem from "./menu_item";
 import "material-symbols";
-
-const highlight_variants = {
-  rest: { 
-    opacity: 0,
-    scaleX: 0,
-    transition: { ease: "easeOut", duration: 0.15 }
-  },
-  hover: {
-    opacity: 1,
-    scaleX: 1,
-    transition: { type: "spring", stiffness: 2500, damping: 100 }
-  }
-};
+import { highlight_variants_x } from "./ui_variants"
 
 const menu_open_variants = {
   closed: { 
@@ -81,19 +69,20 @@ export default function MenuButton() {
       onClick={() => toggleOpen()}>
         <motion.div 
           className="absolute h-0.75 bottom-0 inset-x-0 justify-center bg-cpink-400" 
-          variants={highlight_variants} />
+          variants={highlight_variants_x} />
         <div className="material-symbols-rounded text-stone-200 align-middle">menu</div>
       </motion.button>
       <motion.ul 
-        className="absolute top-11 right-0 h-fit w-fit p-3 rounded-lg bg-stone-800 shadow-xl/20 border-2 border-stone-500 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-2 text-stone-200 text-xl"
+        className="absolute top-11 right-0 h-fit w-fit p-4 rounded-lg bg-stone-800 shadow-xl/20 border-2 border-stone-500 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
         variants={menu_open_variants}
         animate={isOpen ? "open" : "closed"}
       >
+        <div className="absolute h-full w-full top-0 left-0 bg-stone-800 mask-left rounded-md mask-size-[20rem]"></div>
         <motion.li variants={item_variants}><MenuItem symbol="home" text="Home"/></motion.li>
         <motion.li variants={item_variants}><MenuItem symbol="search" text="Search"/></motion.li>
         <motion.li variants={item_variants}><MenuItem symbol="settings" text="Settings"/></motion.li>
         <motion.li variants={item_variants}><MenuItem symbol="account_circle" text="Account"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="favorite" text="About Us"/></motion.li>
+        <motion.li variants={item_variants}><MenuItem symbol="partner_exchange" text="About Us"/></motion.li>
       </motion.ul>
     </div>
   )
