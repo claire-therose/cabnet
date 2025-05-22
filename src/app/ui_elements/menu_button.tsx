@@ -72,7 +72,7 @@ export default function MenuButton() {
           variants={highlight_variants_x} />
         <div className="material-symbols-rounded text-stone-200 align-middle">menu</div>
       </motion.button>
-      <div className="absolute left-0 top-0 h-dvh w-dvw overflow-hidden">
+      <div className="absolute right-0 top-0 h-screen w-50 overflow-hidden">
       <motion.ul 
         className="absolute top-11 right-0 h-fit w-fit p-4 rounded-lg bg-stone-800 shadow-xl/20 border-2 border-stone-500 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
         variants={menu_open_variants}
