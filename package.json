@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "jotai": "^2.12.5",
     "material-symbols": "^0.31.3",
     "motion": "^12.12.1",
     "next": "15.3.2",
