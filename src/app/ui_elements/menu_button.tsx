@@ -11,6 +11,7 @@ import "material-symbols";
 
 const menu_open_variants = {
   closed: { 
+    opacity: 0,
     scaleX: 0.5,
     scaleY: 0,
     y: "-45%",
@@ -20,6 +21,7 @@ const menu_open_variants = {
       duration: 0.15}
   },
   open: {
+    opacity: 1,
     scaleX: 1,
     scaleY: 1,
     y: 0,
@@ -66,7 +68,8 @@ export default function MenuButton() {
       whileFocus="hover"
       animate="rest"
       className="h-11 w-11 relative outline-0 z-50"
-      onClick={() => toggleOpen()}>
+      onClick={() => toggleOpen()}
+      >
         <motion.div 
           className="absolute h-0.75 bottom-0 inset-x-0 justify-center bg-cpink-400" 
           variants={highlight_variants_x} />
@@ -74,7 +77,7 @@ export default function MenuButton() {
       </motion.button>
       <div className="absolute right-0 top-0 h-screen w-50 overflow-hidden">
       <motion.ul 
-        className="absolute top-11 right-0 h-fit w-fit p-3.5 rounded-lg bg-stone-800 shadow-xl/20 border-2 border-stone-500 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
+        className="absolute top-11 right-0 h-fit w-fit p-3.5 rounded-lg bg-stone-800 opacity-0 shadow-xl/20 border-2 border-stone-500 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
         variants={menu_open_variants}
         animate={isOpen ? "open" : "closed"}
       >
