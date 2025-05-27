@@ -74,7 +74,7 @@ export default function MenuButton() {
       </motion.button>
       <div className="absolute right-0 top-0 h-screen w-50 overflow-hidden">
       <motion.ul 
-        className="absolute top-11 right-0 h-fit w-fit p-4 rounded-lg bg-stone-800 shadow-xl/20 border-2 border-stone-500 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
+        className="absolute top-11 right-0 h-fit w-fit p-3.5 rounded-lg bg-stone-800 shadow-xl/20 border-2 border-stone-500 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
         variants={menu_open_variants}
         animate={isOpen ? "open" : "closed"}
       >
