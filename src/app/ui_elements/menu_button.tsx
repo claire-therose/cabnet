@@ -6,8 +6,8 @@
 
 import { motion, useCycle } from "motion/react"
 import MenuItem from "./menu_item";
-import "material-symbols";
 import { highlight_variants_x } from "./ui_variants"
+import "material-symbols";
 
 const menu_open_variants = {
   closed: { 
@@ -78,11 +78,11 @@ export default function MenuButton() {
         variants={menu_open_variants}
         animate={isOpen ? "open" : "closed"}
       >
-        <motion.li variants={item_variants}><MenuItem symbol="home" text="Home"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="search" text="Search"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="settings" text="Settings"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="account_circle" text="Account"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="partner_exchange" text="About Us"/></motion.li>
+        <motion.li variants={item_variants}><MenuItem symbol="home" text="Home" link="/"/></motion.li>
+        <motion.li variants={item_variants}><MenuItem symbol="search" text="Search" link="/search"/></motion.li>
+        <motion.li variants={item_variants}><MenuItem symbol="settings" text="Settings" link="/settings"/></motion.li>
+        <motion.li variants={item_variants}><MenuItem symbol="account_circle" text="Account" link="/account"/></motion.li>
+        <motion.li variants={item_variants}><MenuItem symbol="partner_exchange" text="About Us" link="/about-us"/></motion.li>
       </motion.ul>
       </div>
     </div>

@@ -5,20 +5,25 @@
 //
 
 import { motion } from "motion/react"
-import "material-symbols";
 import { highlight_variants_y } from "./ui_variants";
+import Link from 'next/link';
+import "material-symbols";
 
-export default function MenuItem({symbol, text}) {
+export default function MenuItem({symbol, text, link}: {symbol: string, text: string, link: string}) {
   return (
-    <motion.button 
+    <motion.div 
     className="flex items-center outline-0 relative"
     initial="rest"
     whileHover="hover"
     whileFocus="hover"
     animate="rest">
-      <motion.div className="absolute -left-1 h-6 w-0.75 bg-cpink-400 opacity-0" variants={highlight_variants_y}></motion.div>
-      <div className="material-symbols-rounded msr-inline text-stone-200 p-1">{symbol}</div>
-      <div className="pr-2 text-stone-200">{text}</div>
-    </motion.button>
+      <Link 
+      href={link}
+      className="flex items-center outline-0 relative">
+        <motion.div className="absolute -left-1 h-6 w-0.75 bg-cpink-400 opacity-0" variants={highlight_variants_y}></motion.div>
+        <div className="material-symbols-rounded msr-inline text-stone-200 p-1">{symbol}</div>
+        <div className="pr-2 text-stone-200">{text}</div>
+      </Link>
+    </motion.div>
   )
 }
