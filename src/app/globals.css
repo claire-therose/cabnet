@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: var(--color-stone-800);
+  --background: var(--color-white);
   --z-order-ui: 15;
 }
 
