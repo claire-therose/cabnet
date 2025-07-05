@@ -9,7 +9,7 @@ export default function CabnetLogo() {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlSpace="preserve"
-        className="fill-cpink-500"
+        className="fill-white"
         style={{
           fillRule: "evenodd",
           clipRule: "evenodd",

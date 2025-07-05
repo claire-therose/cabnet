@@ -73,11 +73,11 @@ export default function MenuButton() {
         <motion.div 
           className="absolute h-0.75 bottom-0 inset-x-0 justify-center bg-cpink-400" 
           variants={highlight_variants_x} />
-        <div className="material-symbols-rounded text-zinc-800 align-middle">menu</div>
+        <div className="material-symbols-rounded text-white align-middle">menu</div>
       </motion.button>
       <div className="absolute right-0 top-0 h-screen w-50 overflow-hidden">
       <motion.ul 
-        className="absolute top-11 right-0 h-fit w-fit p-3.5 rounded-lg border-1 border-zinc-500 bg-white opacity-0 shadow-xl/20 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
+        className="absolute top-11 right-0 h-fit w-fit p-3.5 rounded-lg border-1 border-zinc-200 bg-zinc-800 opacity-0 shadow-xl/20 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
         variants={menu_open_variants}
         animate={isOpen ? "open" : "closed"}
       >
