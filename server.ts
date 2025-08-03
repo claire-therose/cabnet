@@ -17,19 +17,19 @@ var options = {
 };
  
 app.prepare().then(() => {
-  https.createServer(options, (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
-    // if (req.headers['x-forwarded-proto']) {
-      const parsedUrl = parse(req.url!, true)
-      handle(req, res, parsedUrl)
-    // }
-  }).listen(port)
-  // createServer((req, res) => {
-  //   const parsedUrl = parse(req.url!, true)
-  //   handle(req, res, parsedUrl)
+  // https.createServer(options, (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
+  //   // if (req.headers['x-forwarded-proto']) {
+  //     const parsedUrl = parse(req.url!, true)
+  //     handle(req, res, parsedUrl)
+  //   // }
   // }).listen(port)
+  createServer((req, res) => {
+    const parsedUrl = parse(req.url!, true)
+    handle(req, res, parsedUrl)
+  }).listen(port)
  
   console.log(
-    `> Server listening at https://localhost:${port} as ${
+    `> Server listening at http://localhost:${port} as ${
       dev ? 'development' : process.env.NODE_ENV
     }`
   )
