@@ -13,15 +13,16 @@ const handle = app.getRequestHandler()
 var options = {
     key: fs.readFileSync('./src/https/key.pem'),
     cert: fs.readFileSync('./src/https/cert.pem'),
-    ca: fs.readFileSync("./src/https/root.pem")
+    ca: fs.readFileSync("./src/https/root.pem"),
+    headers: {
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains always;"
+    }
 };
  
 app.prepare().then(() => {
   https.createServer(options, (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
-    // if (req.headers['x-forwarded-proto']) {
-      const parsedUrl = parse(req.url!, true)
-      handle(req, res, parsedUrl)
-    // }
+    const parsedUrl = parse(req.url!, true)
+    handle(req, res, parsedUrl)
   }).listen(port)
   // createServer((req, res) => {
   //   const parsedUrl = parse(req.url!, true)
