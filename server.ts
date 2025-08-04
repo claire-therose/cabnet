@@ -26,7 +26,9 @@ app.prepare().then(() => {
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("X-Frame-Options", "SAMEORIGIN");
     res.setHeader("Cross-Origin-Resource-Policy", "same-site");
-    res.setHeader("referrer-Policy", "no-referrer")
+    res.setHeader("referrer-Policy", "no-referrer");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; frame-ancestors 'none");
+
     
     const parsedUrl = parse(req.url!, true)
     handle(req, res, parsedUrl)
