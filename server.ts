@@ -32,6 +32,8 @@ app.prepare().then(() => {
     `
     const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, '').trim()
 
+    // # just nonce things
+
     // set response headers
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
     res.setHeader("X-Content-Type-Options", "nosniff");
