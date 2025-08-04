@@ -21,13 +21,24 @@ var options = {
  
 app.prepare().then(() => {
   https.createServer(options, (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
-    // set appropriate server security headers
+    // set up csp headers
+    const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+    const cspHeader = `
+    default-src 'self;
+    style-src 'self' fonts.googleapis.com 'nonce-${nonce};
+    font-src 'self' fonts.gstatic.com;
+    script-src 'self' https://cabnet.media/
+    frame-ancestors 'none';
+    `
+    const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, '').trim()
+
+    // set response headers
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("X-Frame-Options", "SAMEORIGIN");
     res.setHeader("Cross-Origin-Resource-Policy", "same-site");
     res.setHeader("referrer-Policy", "no-referrer");
-    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; script-src 'self' https://cabnet.media/; frame-ancestors 'none'");
+    res.setHeader("Content-Security-Policy", contentSecurityPolicyHeaderValue);
 
     
     const parsedUrl = parse(req.url!, true)
