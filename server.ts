@@ -27,7 +27,7 @@ app.prepare().then(() => {
     res.setHeader("X-Frame-Options", "SAMEORIGIN");
     res.setHeader("Cross-Origin-Resource-Policy", "same-site");
     res.setHeader("referrer-Policy", "no-referrer");
-    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' fonts.googleapis.com font-src fonts.gstatic.com frame-ancestors 'none");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; frame-ancestors 'none");
 
     
     const parsedUrl = parse(req.url!, true)
