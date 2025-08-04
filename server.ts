@@ -1,6 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http'
 import { parse } from 'url'
 import next from 'next'
+import { NextRequest, NextResponse } from 'next/server';
 
 var https = require('https');
 var fs = require('fs');
@@ -15,7 +16,7 @@ var options = {
     cert: fs.readFileSync('./src/https/cert.pem'),
     ca: fs.readFileSync("./src/https/root.pem"),
     // headers: {
-    //   "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    //   "x-nonce": "max-age=31536000; includeSubDomains"
     // }
 };
  
@@ -32,7 +33,8 @@ app.prepare().then(() => {
     `
     const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, '').trim()
 
-    // # just nonce things
+    req.headers['x-nonce'] = nonce;
+    req.headers['Content-Security-Policy'] = contentSecurityPolicyHeaderValue;
 
     // set response headers
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
@@ -42,7 +44,6 @@ app.prepare().then(() => {
     res.setHeader("referrer-Policy", "no-referrer");
     res.setHeader("x-nonce", nonce)
     res.setHeader("Content-Security-Policy", contentSecurityPolicyHeaderValue);
-
     
     const parsedUrl = parse(req.url!, true)
     handle(req, res, parsedUrl)
