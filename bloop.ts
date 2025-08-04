@@ -32,9 +32,33 @@ app.prepare().then(() => {
     frame-ancestors 'none';
     `
     const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, '').trim()
+    
 
-    req.headers['x-nonce'] = nonce;
-    req.headers['Content-Security-Policy'] = contentSecurityPolicyHeaderValue;
+    // var reqOptions = {
+    //   hostname: req.headers.host,
+    //   port: 3000,
+    //   path: req.url,
+    //   method: req.method,
+    //   headers: {
+    //     // "Content-Security-Policy": contentSecurityPolicyHeaderValue,
+    //     // "x-nonce": nonce
+    //   }
+    // }
+
+    req.rawHeaders.push("x-nonce");
+    req.rawHeaders.push(nonce);
+
+    // console.log(reqOptions);
+    // console.log(req);
+
+    // var updatedReq = https.request(reqOptions);
+
+    // var request = https.request(req);
+    // request.setHeader('x-nonce', nonce);
+    // request.setHeader('Content-Security-Policy', contentSecurityPolicyHeaderValue);
+
+    // req.headers['x-nonce'] = nonce;
+    // req.headers['Content-Security-Policy'] = contentSecurityPolicyHeaderValue;
 
     // set response headers
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');

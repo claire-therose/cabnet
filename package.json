@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "npx tsx server.ts",
+    "dev": "next dev --experimental-https --experimental-https-key ./src/https/key.pem --experimental-https-cert ./src/https/cert.pem --experimental-https-ca ./src/https/root.pem",
     "build": "next build",
-    "start": "NODE_ENV=production npx tsx server.ts",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
