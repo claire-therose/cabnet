@@ -27,7 +27,7 @@ app.prepare().then(() => {
     default-src 'self';
     style-src 'self' fonts.googleapis.com 'nonce-${nonce}';
     font-src 'self' fonts.gstatic.com;
-    script-src 'self' https://cabnet.media/;
+    script-src 'self' https://cabnet.media/ 'nonce-${nonce}';
     frame-ancestors 'none';
     `
     const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, '').trim()
