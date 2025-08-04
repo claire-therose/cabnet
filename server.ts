@@ -23,6 +23,8 @@ app.prepare().then(() => {
   https.createServer(options, (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
     // set appropriate server headers
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
     
     const parsedUrl = parse(req.url!, true)
     handle(req, res, parsedUrl)
