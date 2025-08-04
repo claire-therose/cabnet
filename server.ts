@@ -14,20 +14,19 @@ var options = {
     key: fs.readFileSync('./src/https/key.pem'),
     cert: fs.readFileSync('./src/https/cert.pem'),
     ca: fs.readFileSync("./src/https/root.pem"),
-    headers: {
-      "Strict-Transport-Security": "max-age=31536000; includeSubDomains always;"
-    }
+    // headers: {
+    //   "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    // }
 };
  
 app.prepare().then(() => {
   https.createServer(options, (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
+    // set appropriate server headers
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    
     const parsedUrl = parse(req.url!, true)
     handle(req, res, parsedUrl)
   }).listen(port)
-  // createServer((req, res) => {
-  //   const parsedUrl = parse(req.url!, true)
-  //   handle(req, res, parsedUrl)
-  // }).listen(port)
  
   console.log(
     `> Server listening at https://localhost:${port} as ${
