@@ -24,8 +24,8 @@ app.prepare().then(() => {
     // set up csp headers
     const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
     const cspHeader = `
-    default-src 'self;
-    style-src 'self' fonts.googleapis.com 'nonce-${nonce};
+    default-src 'self';
+    style-src 'self' fonts.googleapis.com 'nonce-${nonce}';
     font-src 'self' fonts.gstatic.com;
     script-src 'self' https://cabnet.media/;
     frame-ancestors 'none';
