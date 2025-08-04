@@ -38,6 +38,7 @@ app.prepare().then(() => {
     res.setHeader("X-Frame-Options", "SAMEORIGIN");
     res.setHeader("Cross-Origin-Resource-Policy", "same-site");
     res.setHeader("referrer-Policy", "no-referrer");
+    res.setHeader("x-nonce", nonce)
     res.setHeader("Content-Security-Policy", contentSecurityPolicyHeaderValue);
 
     
