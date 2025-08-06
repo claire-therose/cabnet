@@ -82,7 +82,6 @@ export default function MenuButton() {
         animate={isOpen ? "open" : "closed"}
       >
         <motion.li variants={item_variants}><MenuItem symbol="home" text="Home" link="/"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="search" text="Search" link="/search"/></motion.li>
         <motion.li variants={item_variants}><MenuItem symbol="settings" text="Settings" link="/settings"/></motion.li>
         <motion.li variants={item_variants}><MenuItem symbol="account_circle" text="Account" link="/account"/></motion.li>
         <motion.li variants={item_variants}><MenuItem symbol="partner_exchange" text="About Us" link="/about-us"/></motion.li>
