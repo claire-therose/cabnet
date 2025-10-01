@@ -26,12 +26,11 @@ export default function MenuItem({symbol, text, link}: {symbol: string, text: st
       className={clsx("flex items-center outline-0 rounded-lg relative",{"bg-zinc-600":pathname==link})}>
         <motion.div className="absolute -left-1 h-6 w-0.75 bg-cpink-400 opacity-0" variants={highlight_variants_y}></motion.div>
         <div className="material-symbols-rounded msr-inline text-zinc-100 p-1">{symbol}</div>
-        {/* <div className={clsx("pr-2 text-white",
-          {"underline underline-offset-3 decoration-cpink-400 decoration-2":pathname==link} */}
         <div className="pr-2 text-white">{text}</div>
       </Link>
     </motion.button>
   )
+
 }
 
 // select bar underneath?

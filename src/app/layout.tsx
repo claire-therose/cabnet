@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Noto_Sans } from "next/font/google";
 import ToolBar from "@/app/ui_elements/toolbar"
+import { Providers } from "./providers";
 import "./globals.css";
 
 const font_outfit = Outfit({
@@ -13,11 +14,6 @@ const font_noto_sans = Noto_Sans({
   subsets: ["latin"]
 });
 
-export const metadata: Metadata = {
-  title: "Cabnet",
-  description: "Cabnet web app",
-};
-
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -29,10 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font_outfit.variable} ${font_noto_sans.variable} antialiased overscroll-none selection:bg-cpink-400/80`}
-      >
-        <ToolBar />
-        {children}
+        className={`${font_outfit.variable} ${font_noto_sans.variable} antialiased overscroll-none selection:bg-cpink-500/90`}>
+          <Providers>
+            <ToolBar />
+            {children}
+          </Providers>
       </body>
     </html>
   );
