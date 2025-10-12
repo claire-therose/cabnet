@@ -2,6 +2,16 @@ import { NextResponse, NextRequest } from 'next/server'
  
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
+  // since don't have sign in function yet, just redirect from home to about
+  if (request.nextUrl.host == "localhost:3000") {
+    // dev
+    if (request.nextUrl.pathname == "/") {
+      return NextResponse.redirect("https://localhost:3000/about");
+    }
+  }
+  if (request.nextUrl.pathname == "https://cabnet.media" || request.nextUrl.pathname == "https://localhost:3000") {
+    return NextResponse.redirect("https://localhost:3000/about");
+  }
 //   // for once we have https set up
 
 //   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')

@@ -4,12 +4,12 @@
 //
 //
 
-import { motion, useCycle } from "motion/react"
+import { motion, useCycle, Variants } from "motion/react"
 import MenuItem from "./menu_item";
 import { highlight_variants_x } from "./ui_variants"
 import "material-symbols";
 
-const menu_open_variants = {
+const menu_open_variants: Variants = {
   closed: { 
     opacity: 0,
     scaleX: 0.5,
@@ -35,7 +35,7 @@ const menu_open_variants = {
   }
 };
 
-const item_variants = {
+const item_variants: Variants = {
   closed: {
     scale: 0.95,
     x: 10,
@@ -71,20 +71,20 @@ export default function MenuButton() {
       onClick={() => toggleOpen()}
       >
         <motion.div 
-          className="absolute h-0.75 bottom-0 inset-x-0 justify-center bg-cpink-400" 
+          className="absolute h-0.75 bottom-0 inset-x-0 justify-center bg-cpink-400"
           variants={highlight_variants_x} />
         <div className="material-symbols-rounded text-white align-middle">menu</div>
       </motion.button>
-      <div className="absolute right-0 top-0 h-screen w-50 overflow-hidden">
-      <motion.ul 
-        className="absolute top-11 right-0 h-fit w-fit p-3.5 rounded-lg border-1 border-zinc-400 bg-black opacity-0 shadow-xl/20 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl"
-        variants={menu_open_variants}
-        animate={isOpen ? "open" : "closed"}
-      >
-        <motion.li variants={item_variants}><MenuItem symbol="home" text="Home" link="/"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="settings" text="Settings" link="/settings"/></motion.li>
-        <motion.li variants={item_variants}><MenuItem symbol="partner_exchange" text="About" link="/about"/></motion.li>
-      </motion.ul>
+      <div className="absolute right-0 top-0 h-screen w-50 overflow-hidden pointer-events-none">
+        <motion.ul 
+          className="absolute top-11 right-0 h-fit w-fit p-3.5 rounded-lg bg-black opacity-0 shadow-xl/20 font-[family-name:var(--font-outfit)] font-medium flex-col space-y-3 text-stone-200 text-xl pointer-events-auto"
+          variants={menu_open_variants}
+          animate={isOpen ? "open" : "closed"}
+        >
+          <motion.li variants={item_variants}><MenuItem symbol="home" text="Home" link="/"/></motion.li>
+          <motion.li variants={item_variants}><MenuItem symbol="settings" text="Settings" link="/settings"/></motion.li>
+          <motion.li variants={item_variants}><MenuItem symbol="partner_exchange" text="About" link="/about"/></motion.li>
+        </motion.ul>
       </div>
     </div>
   )

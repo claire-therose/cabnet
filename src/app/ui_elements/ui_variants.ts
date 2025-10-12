@@ -1,4 +1,6 @@
-export const highlight_variants_x = {
+import { Variants } from "motion";
+
+export const highlight_variants_x: Variants = {
   rest: { 
     scaleX: 0,
     opacity: 0,
@@ -11,7 +13,7 @@ export const highlight_variants_x = {
   }
 };
 
-export const highlight_variants_y = {
+export const highlight_variants_y: Variants = {
   rest: { 
     scaleY: 0,
     opacity: 0,

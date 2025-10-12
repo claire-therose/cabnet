@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="">
       {/* <div className="w-full h-11"></div>  */}
-      <div className="absolute top-0 w-full">
+      <div className="absolute top-0 w-full z-10">
         <div className="inline-flex flex-row h-11 w-full brightness-100">
           <div className="grow justify-self-start flex p-2.5">
             <CabnetLogo /> 

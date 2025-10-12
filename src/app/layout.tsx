@@ -26,10 +26,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${font_outfit.variable} ${font_noto_sans.variable} antialiased overscroll-none selection:bg-cpink-500/90`}>
-          <Providers>
-            <ToolBar />
-            {children}
-          </Providers>
+          <ToolBar />
+          {children}
       </body>
     </html>
   );
