@@ -54,9 +54,17 @@ function Cabnet_Scene() {
   )
 }
 
+function DVD_UI() {
+  return (
+    <div>bloop</div>
+  );
+}
+
 export default function Demo() {
+
   return (
     <div className='h-dvh w-dvw'>
+      <DVD_UI />
       <Canvas camera={{fov: 20, position: [0,0,cameraZ]}} className='h-10 w-10'>
         <Cabnet_Scene />
       </Canvas>

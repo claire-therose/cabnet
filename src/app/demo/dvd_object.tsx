@@ -12,7 +12,8 @@ export default function DVD_Object({posX}:{posX : number}) {
 
   const rotation_scale = 1;
 
-  var DVD_selected = false;
+  const [pointer_down, set_pointer_down] = useState(false);
+  const [dvd_selected, set_dvd_selected] = useState(false);
 
   const DVD_hover_transition = useSpring(0, {stiffness: 2000, damping: 50});
   const DVD_selected_transition = useSpring(0, {stiffness: 1500, damping: 80});
@@ -29,9 +30,9 @@ export default function DVD_Object({posX}:{posX : number}) {
     dvd_ref.current.position.z = DVD_z_pos.get();
     dvd_ref.current.rotation.x = DVD_x_rotation.get();
     dvd_ref.current.rotation.y = DVD_y_rotation.get();
-    if (DVD_selected) {
-      dvd_ref.current.rotation.y += state.pointer.x * rotation_scale
-      dvd_ref.current.rotation.x += state.pointer.y * -1 * rotation_scale
+    if (dvd_selected) {
+      dvd_ref.current.rotation.y += state.pointer.x * rotation_scale;
+      dvd_ref.current.rotation.x += state.pointer.y * -1 * rotation_scale;
     }
   })
     
@@ -42,24 +43,31 @@ export default function DVD_Object({posX}:{posX : number}) {
       ref={dvd_ref}
       // little bit of a hacky type solution but it works for now
       onPointerEnter={(e: { stopPropagation: () => void; }) => {
-        if (!DVD_selected) {
+        if (!dvd_selected) {
           DVD_hover_transition.set(1)
         }
         e.stopPropagation()
         }}
-      onPointerLeave={() => DVD_hover_transition.set(0)}
+      onPointerLeave={() => {
+        DVD_hover_transition.set(0);
+        set_pointer_down(false);
+      }}
       // little bit of a hacky type solution but it works for now
       onClick={(e: { stopPropagation: () => void; }) => {
-        if (DVD_selected) {
-          // DVD_hover_transition.set(0);
-          // DVD_selected_transition.set(0);
-          // DVD_selected = false;
+        if (dvd_selected) {
+          DVD_hover_transition.set(0);
+          DVD_selected_transition.set(0);
+          set_dvd_selected(false);
         } else {
           DVD_hover_transition.set(0);
           DVD_selected_transition.set(1);
-          DVD_selected = true;
+          set_dvd_selected(true);
         }
         e.stopPropagation()}}
+      onPointerDown={() => {
+        set_pointer_down(true)}}
+      onPointerUp={() => {
+        set_pointer_down(false)}}
       />
   );
 
