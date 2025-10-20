@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, Noto_Sans } from "next/font/google";
 import ToolBar from "@/app/ui_elements/toolbar"
-import { Providers } from "./providers";
 import "./globals.css";
 
 const font_outfit = Outfit({
