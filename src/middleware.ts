@@ -41,11 +41,6 @@ export function middleware(request: NextRequest) {
     'Content-Security-Policy',
     contentSecurityPolicyHeaderValue
   )
-
-  requestHeaders.set(
-    'Strict-Transport-Security',
-    'max-age=63072000'
-  )
  
   const response = NextResponse.next({
     request: {
@@ -55,6 +50,11 @@ export function middleware(request: NextRequest) {
   response.headers.set(
     'Content-Security-Policy',
     contentSecurityPolicyHeaderValue
+  )
+
+  response.headers.set(
+    'Strict-Transport-Security',
+    'max-age=63072000'
   )
  
   return response
