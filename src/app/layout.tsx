@@ -5,12 +5,14 @@ import "./globals.css";
 
 const font_outfit = Outfit({
   variable: "--font-outfit",
-  subsets: ["latin"]
+  subsets: ["latin"],
+  display: "swap"
 });
 
 const font_noto_sans = Noto_Sans({
   variable: "--font-noto-sans",
-  subsets: ["latin"]
+  subsets: ["latin"],
+  display: "swap"
 });
 
 export const dynamic = 'force-dynamic';
