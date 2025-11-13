@@ -16,51 +16,55 @@ export function middleware(request: NextRequest) {
 
   // for once we have https set up
 
-  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
-  const cspHeader = `
-    default-src 'none';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'nonce-${nonce}';
-    img-src 'self' blob: data:;
-    font-src 'self';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-`
-  // Replace newline characters and spaces
-  const contentSecurityPolicyHeaderValue = cspHeader
-    .replace(/\s{2,}/g, ' ')
-    .trim()
- 
-  const requestHeaders = new Headers(request.headers)
-  requestHeaders.set('x-nonce', nonce)
- 
-  requestHeaders.set(
-    'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue
-  )
- 
-  const response = NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  })
-  response.headers.set(
-    'Content-Security-Policy',
-    contentSecurityPolicyHeaderValue
-  )
+  // ******* things to disable during development
 
-  response.headers.set(
-    'Strict-Transport-Security',
-    'max-age=63072000'
-  )
-
-  response.headers.set(
-    'X-Content-Type-Options',
-    'nosniff'
-  )
+//   const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+//   const cspHeader = `
+//     default-src 'none';
+//     script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+//     style-src 'self' 'nonce-${nonce}';
+//     img-src 'self' blob: data:;
+//     font-src 'self';
+//     object-src 'none';
+//     base-uri 'self';
+//     form-action 'self';
+//     frame-ancestors 'none';
+//     upgrade-insecure-requests;
+// `
+//   // Replace newline characters and spaces
+//   const contentSecurityPolicyHeaderValue = cspHeader
+//     .replace(/\s{2,}/g, ' ')
+//     .trim()
  
-  return response
+//   const requestHeaders = new Headers(request.headers)
+//   requestHeaders.set('x-nonce', nonce)
+ 
+//   requestHeaders.set(
+//     'Content-Security-Policy',
+//     contentSecurityPolicyHeaderValue
+//   )
+ 
+//   const response = NextResponse.next({
+//     request: {
+//       headers: requestHeaders,
+//     },
+//   })
+//   response.headers.set(
+//     'Content-Security-Policy',
+//     contentSecurityPolicyHeaderValue
+//   )
+
+//   response.headers.set(
+//     'Strict-Transport-Security',
+//     'max-age=63072000'
+//   )
+
+//   response.headers.set(
+//     'X-Content-Type-Options',
+//     'nosniff'
+//   )
+ 
+//   return response
+
+  // ******* things to disable during development
 }

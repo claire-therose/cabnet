@@ -2,6 +2,7 @@
 
 import CabnetLogo from "./cabnet_logo";
 import MenuButton from "./menu_button";
+import SignInButton from "./signin_button";
 
 export default function Home() {
   return (
@@ -11,6 +12,9 @@ export default function Home() {
         <div className="inline-flex flex-row h-11 w-full brightness-100">
           <div className="grow justify-self-start flex p-2.5">
             <CabnetLogo /> 
+          </div>
+          <div className="px-5">
+            <SignInButton />
           </div>
           <MenuButton /> 
         </div>
